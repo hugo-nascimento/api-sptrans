@@ -3,23 +3,21 @@ import mapboxgl from 'mapbox-gl';
 import MapboxLanguage from '@mapbox/mapbox-gl-language';
 
 @Component({
-  selector: 'app-mapa',
-  templateUrl: './mapa.component.html',
-  styleUrls: ['./mapa.component.scss']
+  selector: 'app-mapa-posicao',
+  templateUrl: './mapa-posicao.component.html',
+  styleUrls: ['./mapa-posicao.component.scss']
 })
-export class MapaComponent implements OnInit {
+export class MapaPosicaoComponent implements OnInit {
 
-    constructor() {
-        this.storage = window.localStorage;
-      }
-    
-      public storage: Storage;
+  constructor() {
+    this.storage = window.localStorage;
+  }
+
+  public storage: Storage;
 
   ngOnInit(): void {
 
     mapboxgl.accessToken = this.storage.getItem("mapBoxToken");
-
-    
 
     const map = new mapboxgl.Map({
         container: 'map',
@@ -59,8 +57,7 @@ export class MapaComponent implements OnInit {
         .setLngLat([-46.44533225, -23.530976000000003])
         .addTo(map);
 
-        
-    
   }
+
 
 }

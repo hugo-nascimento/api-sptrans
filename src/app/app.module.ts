@@ -8,6 +8,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { FormsModule } from '@angular/forms';
 
@@ -18,6 +19,8 @@ import { EmpresasComponent } from './pages/empresas/empresas.component';
 import { PosicaoComponent } from './pages/posicao/posicao.component';
 import { MapaComponent } from './pages/mapa/mapa.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MapaPosicaoComponent } from './pages/posicao/mapa-posicao/mapa-posicao.component';
+import { ConfiguracoesComponent } from './pages/configuracoes/configuracoes.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ItinerariosComponent,
     EmpresasComponent,
     PosicaoComponent,
-    MapaComponent
+    MapaComponent,
+    MapaPosicaoComponent,
+    ConfiguracoesComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatPaginatorModule,
     MatInputModule,
     MatFormFieldModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

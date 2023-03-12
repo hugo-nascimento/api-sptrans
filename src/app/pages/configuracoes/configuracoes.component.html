@@ -1,0 +1,94 @@
+<div class="alert alert-info titulo" role="alert">
+    <fa-icon [icon]="faGear"></fa-icon>
+    Configurações
+  </div>
+  <div class="main-content">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="consumerKey" placeholder="Digite o consumer-key da API LIB Prefeitura." [(ngModel)]="spTransConsumerKey" required>
+          <label for="consumerKey">SP Trans - Consumer Key</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="consumerSecret" placeholder="Digite o consumer-secret da API LIB Prefeitura." [(ngModel)]="spTransConsumerSecret" required>
+          <label for="consumerSecret">SP Trans - Consumer Secret</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="consumerKey" placeholder="Digite o consumer-key da API LIB Prefeitura." [(ngModel)]="mapBoxToken" required>
+          <label for="consumerKey">MapBox - Token</label>
+        </div>
+
+        <div class="botao">
+            <button *ngIf="
+            (spTransConsumerKey===undefined || spTransConsumerKey==='' || spTransConsumerKey===null) || 
+            (spTransConsumerSecret===undefined || spTransConsumerSecret==='' || spTransConsumerSecret===null) || 
+            (mapBoxToken===undefined || mapBoxToken==='' || mapBoxToken===null)
+            
+            " type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <fa-icon [icon]="faCircleCheck"></fa-icon>
+                Configurar</button>
+            <button *ngIf="
+            (spTransConsumerKey!==undefined && spTransConsumerKey!=='' && spTransConsumerKey!==null) && 
+            (spTransConsumerSecret!==undefined && spTransConsumerSecret!=='' && spTransConsumerSecret!==null) && 
+            (mapBoxToken!==undefined && mapBoxToken!=='' && mapBoxToken!==null)
+            " type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalDone" (click)="configurarAcessos()">
+                <fa-icon [icon]="faCircleCheck"></fa-icon>
+                Configurar</button>
+            <button type="button" class="btn btn-danger" (click)="limpar()">
+                <fa-icon [icon]="faTrash"></fa-icon>
+                Limpar</button>
+            <div *ngIf="carregando===true" class="spinner-border text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title fs-5" id="exampleModalLabel">SPTrans - Erro na configuração</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger titulo" role="alert">
+                            É necessário preencher os dados de acesso às APIs
+                          </div>
+                        <p class="lead">SP Trans - Consumer Key</p>
+                        <p class="lead">SP Trans - Consumer Secret</p>
+                        <p class="lead">MapBox - Token</p>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Modal Confirmação -->
+            <div class="modal fade" id="ModalDone" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title fs-5" id="exampleModalLabel">SPTrans - Configuração concluída</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-success titulo" role="alert">
+                            Dados configurados com sucesso
+                          </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="card w-75">
+          <div class="card-header text-bg-danger">Chaves cadastradas</div>
+          <ul class="list-group list-group-flush mb-3">
+            <li class="list-group-item text-danger mb-3">SP Trans Consumer Key: <span class="badge text-bg-success">{{spTransConsumerKeyConf}}</span> </li>
+            <li class="list-group-item text-danger mb-3">SP Trans Consumer Secret: <span class="badge text-bg-primary">{{spTransConsumerSecretConf}}</span> </li>
+            <li class="list-group-item text-danger mb-3">MapBox Access Token: <span class="badge text-bg-danger">{{mapBoxTokenConf}}</span> </li>
+          </ul>
+        </div>
+
+  </div>

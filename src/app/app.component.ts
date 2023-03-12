@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { faBus, faLocation, faMap, faWarehouse } from '@fortawesome/free-solid-svg-icons';
+import { faBus, faLocation, faMap, faWarehouse, faGear } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -13,17 +13,20 @@ export class AppComponent {
   faLocation = faLocation;
   faMap = faMap;
   faWarehouse = faWarehouse;
+  faGear = faGear;
 
   public linhas: Boolean;
   public itinerarios: Boolean;
   public empresas: Boolean;
   public posicao: Boolean;
+  public configuracoes: Boolean;
 
   ativarLinhas() {
     this.linhas = true;
     this.itinerarios = false;
     this.empresas = false;
     this.posicao = false;
+    this.configuracoes = false;
   }
 
   ativarItinerarios() {
@@ -31,6 +34,7 @@ export class AppComponent {
     this.itinerarios = true;
     this.empresas = false;
     this.posicao = false;
+    this.configuracoes = false;
   }
 
   ativarEmpresas() {
@@ -38,6 +42,7 @@ export class AppComponent {
     this.itinerarios = false;
     this.empresas = true;
     this.posicao = false;
+    this.configuracoes = false;
   }
 
   ativarPosicao() {
@@ -45,6 +50,15 @@ export class AppComponent {
     this.itinerarios = false;
     this.empresas = false;
     this.posicao = true;
+    this.configuracoes = false;
+  }
+
+  ativarConfiguracoes(){
+    this.linhas = false;
+    this.itinerarios = false;
+    this.empresas = false;
+    this.posicao = false;
+    this.configuracoes = true;
   }
 
 }

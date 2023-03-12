@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { faBus, faTrash, faFileExcel, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { ExcelService } from 'src/app/excel.service';
@@ -32,7 +34,8 @@ export class LinhasComponent implements AfterViewInit {
 
   constructor(
     private sptransService: SptransService,
-    private excelService: ExcelService
+    private excelService: ExcelService,
+    private _snackBar: MatSnackBar
   ) { }
 
   faBus = faBus;
@@ -41,6 +44,7 @@ export class LinhasComponent implements AfterViewInit {
   faMagnifyingGlass= faMagnifyingGlass;
 
 
+  public erroApi: boolean;
 
   public pesquisa: string;
   public carregando: boolean;
@@ -55,6 +59,7 @@ export class LinhasComponent implements AfterViewInit {
     this.carregando = true;
     this.sptransService.getToken().subscribe(
       data => {
+        console.log(data);
         var myObj = JSON.parse(JSON.stringify(data));
 
         this.sptransService.getLinhas(termoBusca, myObj.access_token).subscribe(
@@ -66,6 +71,12 @@ export class LinhasComponent implements AfterViewInit {
           }
         )
         
+      },
+      (error: HttpErrorResponse) => {
+        var message = `Erro status: ${error.status}. Falha no acesso ä API. Revisar seus dados de acesso em configurações`;
+        var action = '❌' 
+        this._snackBar.open(message, action);
+        this.carregando = false;
       }
     );
 
@@ -79,6 +90,10 @@ export class LinhasComponent implements AfterViewInit {
     this.carregando = false;
 
   }
+
+
+    
+  
 
   exportarLinhas() {
     this.excelService.generateExcelLinhas(this.excelDataSource);

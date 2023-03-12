@@ -4,21 +4,22 @@
       <div class="natFont"></div>
     </div>
     <div class="d-grid gap-4 botoes">
-        <button class="btn btn-outline-light btn-lg btn-block" type="button" (click)="ativarLinhas()"><fa-icon [icon]="faBus"></fa-icon> Linhas</button>
-        <button class="btn btn-outline-light btn-lg btn-block" type="button" (click)="ativarItinerarios()"><fa-icon [icon]="faMap"></fa-icon> Itinerários</button>
-        <button class="btn btn-outline-light btn-lg btn-block" type="button" (click)="ativarEmpresas()"><fa-icon [icon]="faWarehouse"></fa-icon> Empresas</button>
-        <button class="btn btn-outline-light btn-lg btn-block" type="button" (click)="ativarPosicao()"><fa-icon [icon]="faLocation"></fa-icon> Posição</button>
+      <button class="btn btn-outline-light btn-lg btn-block" type="button" (click)="ativarLinhas()"><fa-icon [icon]="faBus"></fa-icon> Linhas</button>
+      <button class="btn btn-outline-light btn-lg btn-block" type="button" (click)="ativarItinerarios()"><fa-icon [icon]="faMap"></fa-icon> Itinerários</button>
+      <button class="btn btn-outline-light btn-lg btn-block" type="button" (click)="ativarEmpresas()"><fa-icon [icon]="faWarehouse"></fa-icon> Empresas</button>
+      <button class="btn btn-outline-light btn-lg btn-block" type="button" (click)="ativarPosicao()"><fa-icon [icon]="faLocation"></fa-icon> Posição</button>
+      <button class="btn btn-outline-light btn-lg btn-block" type="button" (click)="ativarConfiguracoes()"><fa-icon [icon]="faGear"></fa-icon> Configurações</button>
     </div>
-    
-    
   </div>
-  <div class="content">
+    
 
+
+  <div class="content">
     <div class="mainbus">
         <div class="onibus"></div>
         <div class="titulos">
-            <h5 class="display-4">Consultas API SPTrans</h5>
-            <h5 class="display-6">Confira detalhes das linhas, empresas e posição dos veículos</h5>
+            <h1>Consultas API SPTrans</h1>
+            <h3>Confira detalhes das linhas, empresas e posição dos veículos</h3>
         </div>
         <div class="onibus2"></div>
     </div>
@@ -27,6 +28,6 @@
     <app-itinerarios *ngIf="itinerarios===true"></app-itinerarios>
     <app-empresas *ngIf="empresas===true"></app-empresas>
     <app-posicao *ngIf="posicao===true"></app-posicao>
-
-  </div>
+    <app-configuracoes *ngIf="configuracoes===true"></app-configuracoes>
+  
 </div>

@@ -19,8 +19,8 @@ export class SptransService {
 
     let body = new URLSearchParams();
 
-    var consumerkey = '88kb5MSRerW_eOyS2GlPPmPLXQIa'
-    var consumersecret = 'jq8Wh1KA1GZ6FVLcHAjzA600SqQa'
+    var consumerkey = this.storage.getItem("spTransConsumerKey");
+    var consumersecret = this.storage.getItem("spTransConsumerSecret");
 
     body.set('grant_type', 'client_credentials');
     body.set('consumer-key', consumerkey);

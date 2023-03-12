@@ -1,1 +1,77 @@
-<p>itinerarios works!</p>
+<div class="alert alert-primary" role="alert">
+    <fa-icon [icon]="faMap"></fa-icon>
+    Itinerários das Linhas
+  </div>
+    
+<div class="pesquisar">
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="floatingInput" [(ngModel)]="pesquisa" placeholder="Digite a região ou número da linha">
+        <label for="floatingInput">Linha ou bairro</label>
+        <small id="campoHelp" class="form-text text-muted">Digite o número da linha ou parte do nome do bairro.</small>
+      </div>
+    <!-- <div class="mb-4">
+        <label for="exampleFormControlInput1" class="form-label">Linha ou bairro</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" aria-describedby="campoHelp" [(ngModel)]="pesquisa" placeholder="Digite a região ou número da linha">
+    </div> -->
+    <div class="botao">
+        <button *ngIf="pesquisa===undefined || pesquisa==='' || pesquisa===null" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+            Pesquisar</button>
+        <button *ngIf="pesquisa!==undefined && pesquisa!=='' && pesquisa!==null" type="button" class="btn btn-primary" (click)="consultaItinerario(pesquisa)">
+            <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+            Pesquisar</button>
+        <button type="button" class="btn btn-danger" (click)="limpar()">
+            <fa-icon [icon]="faTrash"></fa-icon>
+            Limpar</button>
+        <div *ngIf="carregando===true" class="spinner-border text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title fs-5" id="exampleModalLabel">SPTrans - Confirmar</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <p>É necessário digitar um termo para busca na API</p>
+                    <p>Podendo ser bairro, região ou número da linha</p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Modal Excel -->
+        <div class="modal fade" id="ModalExcel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title fs-5" id="exampleModalLabel">SPTrans - Exportar</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <p>Sem dados a exportar para o Excel</p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+        
+</div>
+
+<div id="mapa">
+    <app-mapa></app-mapa>
+</div>

@@ -1,7 +1,7 @@
 <div class="alert alert-success" role="alert">
     <fa-icon [icon]="faLocation"></fa-icon>
     Posição dos Veículos
-  </div>
+</div>
     
 <div class="pesquisar">
     <div class="form-floating mb-3">
@@ -9,10 +9,6 @@
         <label for="floatingInput">Linha ou bairro</label>
         <small id="campoHelp" class="form-text text-muted">Digite o número da linha ou parte do nome do bairro.</small>
       </div>
-    <!-- <div class="mb-4">
-        <label for="exampleFormControlInput1" class="form-label">Linha ou bairro</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" aria-describedby="campoHelp" [(ngModel)]="pesquisa" placeholder="Digite a região ou número da linha">
-    </div> -->
     <div class="botao">
         <button *ngIf="pesquisa===undefined || pesquisa==='' || pesquisa===null" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
@@ -72,6 +68,6 @@
         
 </div>
 
-<div id="mapa">
+<div id="map">
     <app-mapa></app-mapa>
 </div>
