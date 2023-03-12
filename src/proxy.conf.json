@@ -1,0 +1,10 @@
+{
+    "/api": {
+      "target": "https://gateway.apilib.prefeitura.sp.gov.br",
+      "secure": false,
+      "pathRewrite": {
+        "^/api": ""
+      },
+      "changeOrigin": true
+    }
+  }

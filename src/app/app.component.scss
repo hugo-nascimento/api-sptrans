@@ -1,0 +1,124 @@
+.main {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.botoes {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.natFont {
+    background-image: url('../assets/img/sp-trans.png');
+    background-size: cover;
+    width: 10em;
+    height: 10em;
+}
+
+.main-nav {
+    margin: 1em auto;
+}
+
+.nav {
+    max-width: 100vw;
+    width: 15%;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-right: 2em;
+    height: 100vh;
+}
+
+.content {
+    padding-top: 2em;
+    margin-left: 16vw;
+    max-width: 100vw;
+    width: 70%;
+}
+
+.painel {
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.ico {
+    margin-right: 0.2em;
+}
+
+
+.custom-class {
+    margin-bottom: 2vh;
+    margin-left: 1vw;
+}
+
+
+.rodape {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.nat-logo {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2em;
+}
+
+.custom-class:hover {
+    cursor: pointer;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.custom-class .mat-icon {
+    vertical-align: middle;
+    color: #fff
+}
+
+.example-headers-align {
+    border: 0.1em solid white;
+}
+
+mat-accordion {
+    padding: 0;
+}
+
+.mainbus {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5vh;
+}
+
+.titulos {
+    color: #e2001a;
+
+}
+
+.titulos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.onibus {
+    background-image: url('../assets/img/onibus-1.png');
+    background-size: cover;
+    width: 17em;
+    height: 12em;
+}
+
+.onibus2 {
+    background-image: url('../assets/img/onibus-2.png');
+    background-size: cover;
+    width: 18em;
+    height: 12em;
+}
