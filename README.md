@@ -1,27 +1,83 @@
-# Sptrans
+# API Sptrans
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.7.
+![image](https://user-images.githubusercontent.com/60021024/224519390-b672bcee-5bf2-47e0-9083-c7901fbb9561.png)
 
-## Development server
+Projeto Frontend desenvolvido a fim de consultar dados na API Olho Vivo da SP Trans
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Tecnologias Utilizadas
 
-## Code scaffolding
+<div style="display: inline-block">
+  <img align="center" alt="Hugo-Angular" height="40" width="40" src="https://github.com/hugo-nascimento/hugo-nascimento/blob/master/angularjs-original.svg?raw=true">
+  Angular Versão 14.2.10
+</div>
+<br>
+<div style="display: inline-block">
+  <img align="center" alt="Hugo-AmgularMaterial" height="40" width="40" src="https://github.com/hugo-nascimento/hugo-nascimento/blob/master/angular-material.png?raw=true">
+  Material Angular Versão 14.2.10
+</div>
+<br>
+<div style="display: inline-block">
+  <img align="center" alt="Hugo-Bootstrap" height="40" width="40" src="https://github.com/hugo-nascimento/hugo-nascimento/blob/master/bootstrap-plain.svg?raw=true">
+  Bootstrap Versão 5.3.0
+</div>
+<br>
+<div style="display: inline-block">
+  <img align="center" alt="Hugo-Bootstrap" height="40" width="40" src="https://github.com/hugo-nascimento/hugo-nascimento/blob/master/typescript-2.svg?raw=true">
+  TypeScript Versão 4.7.4
+</div>
+<br>
+<div style="display: inline-block">
+  <img align="center" alt="Hugo-Js" height="40" width="40" src="https://github.com/hugo-nascimento/hugo-nascimento/blob/master/javascript-original.svg?raw=true">
+  JavaScript ECMAScript 6
+</div>
+<br>
+<div style="display: inline-block">
+  <img align="center" alt="Hugo-Html5" height="40" width="40" src="https://github.com/hugo-nascimento/hugo-nascimento/blob/master/html5-original.svg?raw=true">
+  HTML 5
+</div>
+<br>
+<div style="display: inline-block">
+  <img align="center" alt="Hugo-Css3" height="40" width="40" src="https://github.com/hugo-nascimento/hugo-nascimento/blob/master/css3-original.svg?raw=true">
+  CSS 3
+</div>
+<br>
+<br>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## APIs Utilizadas
+<div style="display: inline-block">
+  <img align="center" alt="Hugo-Css3" height="40" width="40" src="https://github.com/hugo-nascimento/hugo-nascimento/blob/master/sptrans.svg?raw=true">
+   SP Trans - API Olho Vivo
+</div>
+<br>
+<div style="display: inline-block">
+  <img align="center" alt="Hugo-Css3" height="40" width="40" src="https://github.com/hugo-nascimento/hugo-nascimento/blob/master/gtfs.png?raw=true">
+   SP Trans - Arquivos GTFS
+</div>
+<br>
+<div style="display: inline-block">
+  <img align="center" alt="Hugo-Css3" height="40" width="40" src="https://github.com/hugo-nascimento/hugo-nascimento/blob/master/mapbox.png?raw=true">
+   MapBox - API de mapas utilizada pelo Facebook
+</div>
+<br>
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### ⚠️ Pontos Importantes ⚠️
+Para ambas as APIs, é necessário cadastro para obter o token de acesso
 
-## Running unit tests
+#### Para cadastro, documentação e obter token de acesso äs APIs:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+SPTrans: 
+https://apilib.prefeitura.sp.gov.br/store/apis/info?name=OlhoVivo&version=v2.1&provider=admin
 
-## Running end-to-end tests
+MapBox:
+https://docs.mapbox.com/mapbox-gl-js/example/
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## ✅ Objetivos ✅
+
+##### 🚌 Consultar a relação de linhas
+##### 🏢 Consultar as empresas de ônibus que estão cadastradas
+##### 🛣️ Consultar itinerários das linhas
+##### 📍 Consultar a posição em tempo real de um ou mais veículos
+
