@@ -12,15 +12,15 @@
           <label for="consumerSecret">SP Trans - Consumer Secret</label>
         </div>
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="consumerKey" placeholder="Digite o consumer-key da API LIB Prefeitura." [(ngModel)]="mapBoxToken" required>
-          <label for="consumerKey">MapBox - Token</label>
+          <input type="text" class="form-control" id="consumerKey" placeholder="Digite o consumer-key da API LIB Prefeitura." [(ngModel)]="googleMapsApiKey" required>
+          <label for="consumerKey">Google Maps - API Key</label>
         </div>
 
         <div class="botao">
             <button *ngIf="
             (spTransConsumerKey===undefined || spTransConsumerKey==='' || spTransConsumerKey===null) || 
             (spTransConsumerSecret===undefined || spTransConsumerSecret==='' || spTransConsumerSecret===null) || 
-            (mapBoxToken===undefined || mapBoxToken==='' || mapBoxToken===null)
+            (googleMapsApiKey===undefined || googleMapsApiKey==='' || googleMapsApiKey===null)
             
             " type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <fa-icon [icon]="faCircleCheck"></fa-icon>
@@ -28,7 +28,7 @@
             <button *ngIf="
             (spTransConsumerKey!==undefined && spTransConsumerKey!=='' && spTransConsumerKey!==null) && 
             (spTransConsumerSecret!==undefined && spTransConsumerSecret!=='' && spTransConsumerSecret!==null) && 
-            (mapBoxToken!==undefined && mapBoxToken!=='' && mapBoxToken!==null)
+            (googleMapsApiKey!==undefined && googleMapsApiKey!=='' && googleMapsApiKey!==null)
             " type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalDone" (click)="configurarAcessos()">
                 <fa-icon [icon]="faCircleCheck"></fa-icon>
                 Configurar</button>
@@ -53,7 +53,7 @@
                           </div>
                         <p class="lead">SP Trans - Consumer Key</p>
                         <p class="lead">SP Trans - Consumer Secret</p>
-                        <p class="lead">MapBox - Token</p>
+                        <p class="lead">Google Maps - API Key</p>
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
@@ -87,7 +87,7 @@
           <ul class="list-group list-group-flush mb-3">
             <li class="list-group-item text-danger mb-3">SP Trans Consumer Key: <span class="badge text-bg-success">{{spTransConsumerKeyConf}}</span> </li>
             <li class="list-group-item text-danger mb-3">SP Trans Consumer Secret: <span class="badge text-bg-primary">{{spTransConsumerSecretConf}}</span> </li>
-            <li class="list-group-item text-danger mb-3">MapBox Access Token: <span class="badge text-bg-danger">{{mapBoxTokenConf}}</span> </li>
+            <li class="list-group-item text-danger mb-3">Google Maps API Key: <span class="badge text-bg-danger">{{googleMapsApiKeyConf}}</span> </li>
           </ul>
         </div>
 

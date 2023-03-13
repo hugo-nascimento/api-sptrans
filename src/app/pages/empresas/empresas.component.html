@@ -1,0 +1,152 @@
+<div class="alert alert-warning titulo" role="alert">
+    <fa-icon [icon]="faWarehouse"></fa-icon>
+    Empresas
+  </div>
+<div class="main-content">
+    <div class="tabela">
+        <div class="pesquisar">
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" [(ngModel)]="pesquisa" placeholder="Digite a região ou número da linha">
+                <label for="floatingInput">Linha ou bairro</label>
+                <small id="campoHelp" class="form-text text-muted">Digite o número da linha ou parte do nome do bairro.</small>
+            </div>
+            <!-- <div class="mb-4">
+                <label for="exampleFormControlInput1" class="form-label">Linha ou bairro</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" aria-describedby="campoHelp" [(ngModel)]="pesquisa" placeholder="Digite a região ou número da linha">
+            </div> -->
+            <div class="botao">
+                <button type="button" class="btn btn-primary" (click)="consultaEmpresas()">
+                    <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+                    Pesquisar</button>
+                <button type="button" class="btn btn-danger" (click)="limpar()">
+                    <fa-icon [icon]="faTrash"></fa-icon>
+                    Limpar</button>
+                <button
+                    *ngIf="excelDataSource.length===0 ||
+                    excelDataSource===undefined ||
+                    excelDataSource===null"
+                    type="button" class="btn btn-success"
+                    data-bs-toggle="modal"
+                    data-bs-target="#ModalExcel">
+                    <fa-icon [icon]="faFileExcel"></fa-icon>
+                    Exportar Para Excel
+                </button>
+                <button
+                    *ngIf="excelDataSource.length>=1 &&
+                    excelDataSource!==undefined &&
+                    excelDataSource!==null"
+                    (click)="exportarEmpresas()"
+                    type="button" class="btn btn-success">
+                    <fa-icon [icon]="faFileExcel"></fa-icon>
+                    Exportar Para Excel
+                </button>
+                <div *ngIf="carregando===true" class="spinner-border text-danger" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title fs-5" id="exampleModalLabel">SPTrans - Confirmar</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>É necessário digitar um termo para busca na API</p>
+                            <p>Podendo ser bairro, região ou número da linha</p>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Modal Excel -->
+                <div class="modal fade" id="ModalExcel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title fs-5" id="exampleModalLabel">SPTrans - Exportar</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Sem dados a exportar para o Excel</p>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+    
+                
+        </div>
+
+  <div class="tabela">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="ic">
+                <th mat-header-cell *matHeaderCellDef> * </th>
+                <td colspan="1" mat-cell *matCellDef="let element"><fa-icon [icon]="faBus"></fa-icon></td>
+            </ng-container>
+            <ng-container matColumnDef="cl">
+                <th mat-header-cell *matHeaderCellDef> Código da Linha </th>
+                <td mat-cell *matCellDef="let element"> {{element.cl}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="lc">
+                <th mat-header-cell *matHeaderCellDef> Circular? </th>
+                <td mat-cell *matCellDef="let element">
+                    <span *ngIf="element.lc===true" class="badge rounded-pill text-bg-info">Sim</span>
+                    <span *ngIf="element.lc===false" class="badge rounded-pill text-bg-warning">Não</span>
+                </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="lt">
+                <th mat-header-cell *matHeaderCellDef> Número da Linha </th>
+                <td mat-cell *matCellDef="let element"> {{element.lt}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tl">
+                <th mat-header-cell *matHeaderCellDef> Cod Ref Linha </th>
+                <td mat-cell *matCellDef="let element"> {{element.tl}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="sl">
+                <th mat-header-cell *matHeaderCellDef> Sentido </th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.sl===1 ? element.ts : element.tp}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tp">
+                <th mat-header-cell *matHeaderCellDef> Terminal Principal </th>
+                <td mat-cell *matCellDef="let element"> {{element.tp}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ts">
+                <th mat-header-cell *matHeaderCellDef> Terminal Secundário </th>
+                <td mat-cell *matCellDef="let element"> {{element.ts}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSize]="15" showFirstLastButtons aria-label="Select page" color="warn"
+            class="paginas">
+        </mat-paginator>
+
+  </div>
+
+    
+          
+      
+</div>
+</div>

@@ -12,7 +12,11 @@ export class PosicaoComponent implements OnInit {
 
   constructor(
     private sptransService: SptransService
-  ) { }
+  ) {
+    this.storage = window.localStorage;
+  }
+
+  public storage: Storage;
 
   faBus = faBus;
   faTrash = faTrash;
@@ -27,9 +31,17 @@ export class PosicaoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  consultaPosicao(linha: string){
+  consultaPosicaoDosVeiculos(linha: string){
+    
 
   }
+
+  consultaPosicaoDosVeiculosAll() {
+
+
+    
+  }
+  
 
   limpar(){
     this.pesquisa = "";
@@ -37,3 +49,4 @@ export class PosicaoComponent implements OnInit {
   }
 
 }
+

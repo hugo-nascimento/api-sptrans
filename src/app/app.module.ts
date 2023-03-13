@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientJsonpModule  } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+import { GoogleMapsModule } from '@angular/google-maps';
 
 import { FormsModule } from '@angular/forms';
 
@@ -37,6 +39,7 @@ import { ConfiguracoesComponent } from './pages/configuracoes/configuracoes.comp
     BrowserModule,
     FontAwesomeModule,
     HttpClientModule,
+    HttpClientJsonpModule,
     FormsModule,
     BrowserAnimationsModule,
     MatTableModule,
@@ -44,7 +47,11 @@ import { ConfiguracoesComponent } from './pages/configuracoes/configuracoes.comp
     MatInputModule,
     MatFormFieldModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    GoogleMapsModule
+  ],
+  exports: [
+    MapaComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

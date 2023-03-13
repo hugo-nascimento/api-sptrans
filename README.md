@@ -55,8 +55,8 @@ Projeto Frontend desenvolvido a fim de consultar dados na API Olho Vivo da SP Tr
 </div>
 <br>
 <div style="display: inline-block">
-  <img align="center" alt="Hugo-Css3" height="40" width="40" src="https://github.com/hugo-nascimento/hugo-nascimento/blob/master/mapbox.png?raw=true">
-   MapBox - API de mapas utilizada pelo Facebook
+  <img align="center" alt="Hugo-GoogmeMaps" height="40" width="40" src="https://github.com/hugo-nascimento/hugo-nascimento/blob/master/google-maps.png?raw=true">
+   Google Maps - API de mapas do Google
 </div>
 <br>
 
@@ -69,8 +69,12 @@ Para ambas as APIs, é necessário cadastro para obter o token de acesso
 SPTrans: 
 https://apilib.prefeitura.sp.gov.br/store/apis/info?name=OlhoVivo&version=v2.1&provider=admin
 
-MapBox:
-https://docs.mapbox.com/mapbox-gl-js/example/
+Google Maps:
+https://developers.google.com/maps/documentation/javascript/reference?hl=pt-br
+
+#### 📍Alteração da API de Mapas:
+##### De: MapBox
+##### Para: Google Maps
 
 
 

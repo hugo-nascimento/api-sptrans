@@ -13,9 +13,12 @@
         <button *ngIf="pesquisa===undefined || pesquisa==='' || pesquisa===null" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
             Pesquisar</button>
-        <button *ngIf="pesquisa!==undefined && pesquisa!=='' && pesquisa!==null" type="button" class="btn btn-primary" (click)="consultaPosicao(pesquisa)">
+        <button *ngIf="pesquisa!==undefined && pesquisa!=='' && pesquisa!==null" type="button" class="btn btn-primary" (click)="consultaPosicaoDosVeiculos(pesquisa)">
             <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
             Pesquisar</button>
+        <button type="button" class="btn btn-success" (click)="consultaPosicaoDosVeiculosAll()">
+            <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+            Pesquisar Todos</button>
         <button type="button" class="btn btn-danger" (click)="limpar()">
             <fa-icon [icon]="faTrash"></fa-icon>
             Limpar</button>
@@ -34,8 +37,7 @@
                 </button>
                 </div>
                 <div class="modal-body">
-                    <p>É necessário digitar um termo para busca na API</p>
-                    <p>Podendo ser bairro, região ou número da linha</p>
+                    <p>É necessário digitar o número da linha para busca na API</p>
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
@@ -68,6 +70,6 @@
         
 </div>
 
-<div id="map">
-    <app-mapa></app-mapa>
+<div class="mapa">
+    <app-mapa id="map"></app-mapa>
 </div>

@@ -1,7 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
-import { faBus, faTrash, faFileExcel, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faBus, faTrash, faFileExcel, faMagnifyingGlass, faWarehouse } from '@fortawesome/free-solid-svg-icons';
 import { ExcelService } from 'src/app/excel.service';
 import { SptransService } from 'src/app/sptrans.service';
 
@@ -26,7 +28,7 @@ export class EmpresasComponent implements AfterViewInit {
 
   excelDataSource = [];
   tokenDataSource: IToken[];
-  dataSource = new MatTableDataSource<ILinhas>(iLinhas);
+  dataSource = new MatTableDataSource<IEmpresas>(iEmpresas);
 
   @ViewChild(MatPaginator) paginatorLinha: MatPaginator;
 
@@ -39,6 +41,7 @@ export class EmpresasComponent implements AfterViewInit {
   faTrash = faTrash;
   faFileExcel = faFileExcel;
   faMagnifyingGlass= faMagnifyingGlass;
+  faWarehouse = faWarehouse;
 
 
 
@@ -50,17 +53,17 @@ export class EmpresasComponent implements AfterViewInit {
     this.pesquisa = undefined;
   }
 
-  consultaLinha(termoBusca: string){
+  consultaEmpresas(){
 
     this.carregando = true;
     this.sptransService.getToken().subscribe(
       data => {
         var myObj = JSON.parse(JSON.stringify(data));
 
-        this.sptransService.getLinhas(termoBusca, myObj.access_token).subscribe(
+        this.sptransService.getEmpresas(myObj.access_token).subscribe(
           res => {
             this.excelDataSource = res;
-            this.dataSource = new MatTableDataSource<ILinhas>(res);
+            this.dataSource = new MatTableDataSource<IEmpresas>(res);
             this.dataSource.paginator = this.paginatorLinha
             this.carregando = false;
           }
@@ -74,7 +77,7 @@ export class EmpresasComponent implements AfterViewInit {
   limpar() {
     this.pesquisa = "";
     this.excelDataSource = [];
-    this.dataSource = new MatTableDataSource<ILinhas>(iLinhas);
+    this.dataSource = new MatTableDataSource<IEmpresas>(iEmpresas);
     this.dataSource.paginator = this.paginatorLinha;
     this.carregando = false;
 
@@ -87,19 +90,14 @@ export class EmpresasComponent implements AfterViewInit {
 
 }
 
-export interface ILinhas {
+export interface IEmpresas {
 
-  ic: any,
-  cl: number,
-  lc: Boolean,
-  lt: string,
-  sl: number,
-  tl: number,
-  tp: string,
-  ts: string
+  a: number, // Código da Região
+  c: number, // Código da Empresa
+  n: string // Nome da Empresa
 }
 
-var iLinhas: ILinhas[] = [];
+var iEmpresas: IEmpresas[] = [];
 
 export interface IToken {
   access_token: string,

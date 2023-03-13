@@ -26,44 +26,44 @@ export class ConfiguracoesComponent implements OnInit {
 
   public spTransConsumerKey: string;
   public spTransConsumerSecret: string;
-  public mapBoxToken: string;
+  public googleMapsApiKey: string;
   public carregando: boolean;
 
   public spTransConsumerKeyConf: string;
   public spTransConsumerSecretConf: string;
-  public mapBoxTokenConf: string;
+  public googleMapsApiKeyConf: string;
 
   ngOnInit(): void {
     this.carregando = false;
     this.spTransConsumerKey = undefined;
     this.spTransConsumerSecret = undefined;
-    this.mapBoxToken = undefined;
+    this.googleMapsApiKey = undefined;
 
     this.spTransConsumerKeyConf = this.storage.getItem("spTransConsumerKey");
     this.spTransConsumerSecretConf = this.storage.getItem("spTransConsumerSecret");
-    this.mapBoxTokenConf = this.storage.getItem("mapBoxToken");
+    this.googleMapsApiKeyConf = this.storage.getItem("googleMapsApiKey");
   }
 
   configurarAcessos() {
     this.storage.removeItem("spTransConsumerKey");
     this.storage.removeItem("spTransConsumerSecret");
-    this.storage.removeItem("mapBoxToken");
+    this.storage.removeItem("googleMapsApiKey");
 
     this.storage.setItem("spTransConsumerKey", this.spTransConsumerKey);
     this.storage.setItem("spTransConsumerSecret", this.spTransConsumerSecret);
-    this.storage.setItem("mapBoxToken", this.mapBoxToken);
+    this.storage.setItem("googleMapsApiKey", this.googleMapsApiKey);
     this.limpar();
 
     this.spTransConsumerKeyConf = this.storage.getItem("spTransConsumerKey");
     this.spTransConsumerSecretConf = this.storage.getItem("spTransConsumerSecret");
-    this.mapBoxTokenConf = this.storage.getItem("mapBoxToken");
+    this.googleMapsApiKeyConf = this.storage.getItem("googleMapsApiKey");
 
   }
 
   limpar(){
     this.spTransConsumerKey = undefined;
     this.spTransConsumerSecret = undefined;
-    this.mapBoxToken = undefined;
+    this.googleMapsApiKey = undefined;
   }
 
 
