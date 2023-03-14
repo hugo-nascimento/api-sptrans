@@ -1,8 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatTableDataSource } from '@angular/material/table';
+import { OnInit, Component } from '@angular/core';
 import { faBus, faTrash, faFileExcel, faMagnifyingGlass, faWarehouse } from '@fortawesome/free-solid-svg-icons';
 import { ExcelService } from 'src/app/excel.service';
 import { SptransService } from 'src/app/sptrans.service';
@@ -12,25 +9,22 @@ import { SptransService } from 'src/app/sptrans.service';
   templateUrl: './empresas.component.html',
   styleUrls: ['./empresas.component.scss']
 })
-export class EmpresasComponent implements AfterViewInit {
+export class EmpresasComponent implements OnInit {
 
   displayedColumns: string[] = [
     'ic',
-    'cl',
-    'lc',
-    'lt',
-    'tl',
-    'sl',
-    'tp',
-    'ts'
+    'a',
+    'c',
+    'n'
     
   ]
 
   excelDataSource = [];
   tokenDataSource: IToken[];
-  dataSource = new MatTableDataSource<IEmpresas>(iEmpresas);
+  dataSource = [];
+  auxDataSource = [];
+  empresaDataSource = [];
 
-  @ViewChild(MatPaginator) paginatorLinha: MatPaginator;
 
   constructor(
     private sptransService: SptransService,
@@ -43,14 +37,18 @@ export class EmpresasComponent implements AfterViewInit {
   faMagnifyingGlass= faMagnifyingGlass;
   faWarehouse = faWarehouse;
 
+  currentPage: number;
+  totalPages: number;
+  pages: number[];
 
+  public erroApi: boolean;
 
   public pesquisa: string;
   public carregando: boolean;
 
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginatorLinha;
-    this.pesquisa = undefined;
+
+  ngOnInit(): void {
+    this.setPage(1);
   }
 
   consultaEmpresas(){
@@ -62,14 +60,45 @@ export class EmpresasComponent implements AfterViewInit {
 
         this.sptransService.getEmpresas(myObj.access_token).subscribe(
           res => {
+            for(let i = 0; i < res.e.length; i++){
+              for(let j = 0; j < res.e[i].e.length; j++){
+                this.dataSource.push(res.e[i].e[j])
+              }
+            }
             this.excelDataSource = res;
-            this.dataSource = new MatTableDataSource<IEmpresas>(res);
-            this.dataSource.paginator = this.paginatorLinha
+            this.dataSource = Array.from(this.dataSource);
+            this.totalPages = Math.ceil(this.dataSource.length / 15);
+            this.pages = Array.from({length: this.totalPages}, (_, i) => i + 1);
+            this.excelDataSource = res;
             this.carregando = false;
           }
         )
+
         
+        
+      },
+      (error: HttpErrorResponse) => {
+
+        const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+
+        const alert = (message, type) => {
+          const wrapper = document.createElement('div')
+          wrapper.innerHTML = [
+            `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+            `   <div>${message}</div>`,
+            '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+            '</div>'
+          ].join('')
+
+          alertPlaceholder.append(wrapper)
+        }
+
+        alert(`Erro status: ${error.status}. Falha no acesso ä API. Revisar seus dados de acesso em configurações`, 'danger')
+
+        this.carregando = false;
       }
+
+      
     );
 
   }
@@ -77,11 +106,31 @@ export class EmpresasComponent implements AfterViewInit {
   limpar() {
     this.pesquisa = "";
     this.excelDataSource = [];
-    this.dataSource = new MatTableDataSource<IEmpresas>(iEmpresas);
-    this.dataSource.paginator = this.paginatorLinha;
+    this.dataSource = [];
     this.carregando = false;
 
   }
+
+  setPage(page: number) {
+    if (page < 1 || page > this.totalPages) {
+      return;
+    }
+    this.currentPage = page;
+  }
+
+  previousPage() {
+    this.setPage(this.currentPage - 1);
+  }
+
+  nextPage() {
+    this.setPage(this.currentPage + 1);
+  }
+
+  getPaginatedData() {
+    const startIndex = (this.currentPage - 1) * 15;
+    const endIndex = startIndex + 15;
+    return this.dataSource.slice(startIndex, endIndex);
+  } 
 
   exportarEmpresas() {
     // this.excelService.generateExcelLinhas(this.excelDataSource);

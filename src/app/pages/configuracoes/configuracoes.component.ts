@@ -66,5 +66,9 @@ export class ConfiguracoesComponent implements OnInit {
     this.googleMapsApiKey = undefined;
   }
 
+  load() {
+      location.reload();
+  }
+
 
 }

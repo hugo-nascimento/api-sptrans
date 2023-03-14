@@ -22,7 +22,11 @@
     <!-- Google Maps -->
     <script>
       const googleMapsApiKey = localStorage.getItem('googleMapsApiKey');
-      document.write('<script src="https://maps.googleapis.com/maps/api/js?key=' + googleMapsApiKey + '"><\/script>');
+      var script = document.createElement('script');  
+      script.src = "https://maps.googleapis.com/maps/api/js?key=" + googleMapsApiKey;  
+      script.async = true;
+      document.head.appendChild(script);
+      // document.write('<script src="https://maps.googleapis.com/maps/api/js?key=' + googleMapsApiKey + '"><\/script>');
     </script>
   
 

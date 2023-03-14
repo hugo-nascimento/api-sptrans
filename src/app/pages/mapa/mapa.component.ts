@@ -1,11 +1,8 @@
-import { OnInit, Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { GoogleMapsService } from 'src/app/google-maps.service';
-
-
-
 
 @Component({
   selector: 'app-mapa',
@@ -14,7 +11,7 @@ import { GoogleMapsService } from 'src/app/google-maps.service';
 })
 
 
-export class MapaComponent implements OnInit {
+export class MapaComponent{
   apiLoaded: Observable<boolean>;
   display: google.maps.LatLngLiteral;
   map: any;
@@ -37,7 +34,6 @@ export class MapaComponent implements OnInit {
   center: google.maps.LatLngLiteral = {lat: -23.5421205, lng: -46.471834};
   zoom = 16;
 
-
   moveMap(event: google.maps.MapMouseEvent) {
     this.center = (event.latLng.toJSON());
   }
@@ -46,12 +42,6 @@ export class MapaComponent implements OnInit {
     this.display = event.latLng.toJSON();
   }
 
-  public ngOnInit(): void  {
-    
-
-  }
-
- 
   
 
 }
