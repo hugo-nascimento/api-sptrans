@@ -1,1 +1,1 @@
-/api  https://gateway.apilib.prefeitura.sp.gov.br
+/api/*  https://gateway.apilib.prefeitura.sp.gov.br/api/:splat  200
