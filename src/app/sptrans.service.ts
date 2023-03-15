@@ -15,7 +15,7 @@ export class SptransService {
 
   public getToken() {
     
-    var url = '/api/token';
+    var url = '/token';
 
     let body = new URLSearchParams();
 
@@ -46,7 +46,7 @@ export class SptransService {
       'Authorization': `Bearer ${token}`
     })};
 
-    return this.httpClient.get(`/api/sptrans/olhovivo/v2.1/Linha/Buscar?termosBusca=${termoBusca}`, httpOptions)
+    return this.httpClient.get(`/sptrans/olhovivo/v2.1/Linha/Buscar?termosBusca=${termoBusca}`, httpOptions)
   }
 
   public getEmpresas(token: string): Observable<any> {
@@ -55,7 +55,7 @@ export class SptransService {
       'Authorization': `Bearer ${token}`
     })};
 
-    return this.httpClient.get('/api/sptrans/olhovivo/v2.1/Empresa', httpOptions)
+    return this.httpClient.get('/sptrans/olhovivo/v2.1/Empresa', httpOptions)
   }
 
 

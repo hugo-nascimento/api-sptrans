@@ -1,1 +1,2 @@
-/api/*  https://gateway.apilib.prefeitura.sp.gov.br/api/:splat  200
+/token/*  https://gateway.apilib.prefeitura.sp.gov.br/token/:splat  200
+/sptrans/*  https://gateway.apilib.prefeitura.sp.gov.br/sptrans/:splat  200

@@ -1,9 +1,17 @@
 {
-    "/api": {
+    "/token": {
       "target": "https://gateway.apilib.prefeitura.sp.gov.br",
       "secure": false,
       "pathRewrite": {
-        "^/api": ""
+        "^/token": ""
+      },
+      "changeOrigin": true
+    },
+    "/sptrans": {
+      "target": "https://gateway.apilib.prefeitura.sp.gov.br",
+      "secure": false,
+      "pathRewrite": {
+        "^/sptrans": ""
       },
       "changeOrigin": true
     }
