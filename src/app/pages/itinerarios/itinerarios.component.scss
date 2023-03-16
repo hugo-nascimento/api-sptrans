@@ -1,3 +1,26 @@
-#mapa {
+#map {
     margin-top: 2em;
+    height: 400px;
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    width: 90em;
+}
+
+.titulo {
+    width: 90em;
+}
+
+.botao {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 2em;
+    width: 60em;
+}
+
+.botao button {
+    margin-right: 0.5em;
 }

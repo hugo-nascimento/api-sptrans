@@ -68,4 +68,16 @@ th {
     border: solid 1px #dc3545;
 }
 
+.regiao-tabela {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mapa {
+    background-image: url('../../../assets/img/mapasp.png');
+    background-size: cover;
+    width: 16em;
+    height: 25em;
+}
+
 

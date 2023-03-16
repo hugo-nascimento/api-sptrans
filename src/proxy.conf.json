@@ -1,18 +1,21 @@
 {
     "/token": {
-      "target": "https://gateway.apilib.prefeitura.sp.gov.br",
+      "target": "https://gateway.apilib.prefeitura.sp.gov.br/token",
       "secure": false,
       "pathRewrite": {
         "^/token": ""
       },
       "changeOrigin": true
+   
     },
     "/sptrans": {
-      "target": "https://gateway.apilib.prefeitura.sp.gov.br",
+      "target": "https://gateway.apilib.prefeitura.sp.gov.br/sptrans",
       "secure": false,
       "pathRewrite": {
         "^/sptrans": ""
       },
       "changeOrigin": true
+   
     }
   }
+

@@ -3,17 +3,34 @@
     Posição dos Veículos
 </div>
     
+<select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+    <option selected>Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+
+ 
 <div class="pesquisar">
-    <div class="form-floating mb-3">
-        <input type="email" class="form-control" id="floatingInput" [(ngModel)]="pesquisa" placeholder="Digite a região ou número da linha">
-        <label for="floatingInput">Linha ou bairro</label>
-        <small id="campoHelp" class="form-text text-muted">Digite o número da linha ou parte do nome do bairro.</small>
-      </div>
+
+
+
+      <select class="selectpicker" data-live-search="true" data-live-search-placeholder="Digite aqui para pesquisar...">
+        <option value="1" data-tokens="A">Opção A1</option>
+        <option value="2" data-tokens="A">Opção A2</option>
+        <option value="3" data-tokens="B">Opção B1</option>
+        <option value="4" data-tokens="B">Opção B2</option>
+        <option value="5" data-tokens="C">Opção C1</option>
+        <option value="6" data-tokens="C">Opção C2</option>
+      </select>
+      
+
+
     <div class="botao">
         <button *ngIf="pesquisa===undefined || pesquisa==='' || pesquisa===null" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
             Pesquisar</button>
-        <button *ngIf="pesquisa!==undefined && pesquisa!=='' && pesquisa!==null" type="button" class="btn btn-primary" (click)="consultaPosicaoDosVeiculos(pesquisa)">
+        <button *ngIf="pesquisa!==undefined && pesquisa!=='' && pesquisa!==null" type="button" class="btn btn-primary" (click)="consultaPosicaoDosVeiculos(linha)">
             <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
             Pesquisar</button>
         <button type="button" class="btn btn-success" (click)="consultaPosicaoDosVeiculosAll()">
@@ -70,6 +87,4 @@
         
 </div>
 
-<div class="mapa">
-    <app-mapa id="map"></app-mapa>
-</div>
+<div id="map"></div>

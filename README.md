@@ -12,11 +12,6 @@ Projeto Frontend desenvolvido a fim de consultar dados na API Olho Vivo da SP Tr
 </div>
 <br>
 <div style="display: inline-block">
-  <img align="center" alt="Hugo-AmgularMaterial" height="40" width="40" src="https://github.com/hugo-nascimento/hugo-nascimento/blob/master/angular-material.png?raw=true">
-  Material Angular Versão 14.2.10
-</div>
-<br>
-<div style="display: inline-block">
   <img align="center" alt="Hugo-Bootstrap" height="40" width="40" src="https://github.com/hugo-nascimento/hugo-nascimento/blob/master/bootstrap-plain.svg?raw=true">
   Bootstrap Versão 5.3.0
 </div>
@@ -55,28 +50,25 @@ Projeto Frontend desenvolvido a fim de consultar dados na API Olho Vivo da SP Tr
 </div>
 <br>
 <div style="display: inline-block">
-  <img align="center" alt="Hugo-GoogmeMaps" height="40" width="40" src="https://github.com/hugo-nascimento/hugo-nascimento/blob/master/google-maps.png?raw=true">
-   Google Maps - API de mapas do Google
+  <img align="center" alt="Hugo-LeaFlet" height="40" width="40" src="https://github.com/hugo-nascimento/hugo-nascimento/blob/master/leaflet.png?raw=true">
+   Leaflet Maps - API de mapas Open Source
 </div>
 <br>
 
 
 ### ⚠️ Pontos Importantes ⚠️
-Para ambas as APIs, é necessário cadastro para obter o token de acesso
+Para a API da SP Trans, é necessário cadastro para obter o token de acesso
 
-#### Para cadastro, documentação e obter token de acesso äs APIs:
-
-SPTrans: 
+#### Para cadastro, acesse o site de Vitrine de API's da Prefeitura de São Paulo
 https://apilib.prefeitura.sp.gov.br/store/apis/info?name=OlhoVivo&version=v2.1&provider=admin
 
-Google Maps:
-https://developers.google.com/maps/documentation/javascript/reference?hl=pt-br
 
-#### 📍Alteração da API de Mapas:
-##### De: MapBox
-##### Para: Google Maps
+#### Para documentação da API SP Trans, acesse:
+https://www.sptrans.com.br/desenvolvedores/api-do-olho-vivo-guia-de-referencia/documentacao-api/
 
+#### Para documentação da API de mapas Leaflet, acesse:
 
+https://leafletjs.com/
 
 ## ✅ Objetivos ✅
 
